@@ -12,9 +12,8 @@
 This repository contains a ransomware simulation for controlled, educational use:
 
 - **CalculatorApp.exe** – a benign “calculator” UI that drops and launches the real payload  
-- **CalculatorManager.exe** – the simulated ransomware encrypter/decrypter  
 - **capstone-site/** – Next.js “fake download” website to deliver the payload  
-- **payload.txt** & **base64-script.py** – utilities to embed and extract the encrypted dropper  
+- **payload.txt** & **base64script.py** – utilities to embed and extract the encrypted dropper  
 
 > **Do not deploy on production systems or without explicit authorization.**
 
@@ -34,8 +33,6 @@ This repository contains a ransomware simulation for controlled, educational use
 ├── Midterm\_Presentation.pptx
 ├── Final\_Presentation.pptx
 
-
-````
 
 ---
 
