@@ -15,24 +15,7 @@ This repository contains a ransomware simulation for controlled, educational use
 - **capstone-site/** – Next.js “fake download” website to deliver the payload  
 - **payload.txt** & **base64script.py** – utilities to embed and extract the encrypted dropper  
 
-> **Do not deploy on production systems or without explicit authorization.**
-
----
-
-## 📁 Folder Structure
-
-```
-
-.
-├── CalculatorApp.exe
-├── MainWindow\_CalculatorApp.cs
-├── MainWindow\_Manager.cs
-├── payload.txt
-├── base64-script.py
-├── capstone-site/
-├── Midterm\_Presentation.pptx
-├── Final\_Presentation.pptx
-
+ **Do not deploy on production systems or without explicit authorization.**
 
 ---
 
