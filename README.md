@@ -22,7 +22,7 @@ This repository contains a ransomware simulation for controlled, educational use
 ## ⚙️ Setting Up the Fake-Download Site
 
 1. **Enter the site directory**  
-   ```bash
+   ```
    cd capstone-site
 ````
 
