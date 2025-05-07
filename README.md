@@ -1,7 +1,7 @@
 
 
 
-```markdown
+```
 # Capstone Project: Ransomware Simulation & Delivery  
 **Aimery Barrault | CSCI 460 – Capstone**
 
@@ -28,7 +28,7 @@ This repository contains a ransomware simulation for controlled, educational use
 
 2. **Install dependencies**
 
-   ```bash
+   ```
    npm install
    # or
    yarn install
