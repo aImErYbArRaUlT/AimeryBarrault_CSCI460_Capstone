@@ -59,7 +59,7 @@ This repository contains a controlled, educational ransomware simulation.
 
 ## 🖥️ CalculatorApp (Dropper UI)
 
-**`MainWindow_CalculatorApp.cs`** — A WPF application that:
+**`MainWindow_CalculatorApp.cs`**   A WPF application that:
 
 1. Displays a standard calculator interface.
 2. On trigger (e.g. Backspace), reads a Base64-encoded string.
@@ -70,7 +70,7 @@ This repository contains a controlled, educational ransomware simulation.
 
 ## 🔒 Ransomware Simulator
 
-**`MainWindow_Manager.cs`** — A WPF application that performs:
+**`MainWindow_Manager.cs`**   A WPF application that performs:
 
 1. **File Encryption**
 
