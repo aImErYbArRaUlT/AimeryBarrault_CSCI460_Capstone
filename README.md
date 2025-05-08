@@ -85,9 +85,6 @@ This repository contains a controlled, educational ransomware simulation.
 4. **Password-Protected Decryption**
 
    * Verifies via PBKDF2(SHA-256), allowing up to three attempts.
-5. **Self-Destruct**
-
-   * Clears shadow copies, zero-wipes key and flag files, removes the Run-key, then exits.
 
 <details>
 <summary>Encryption code excerpt</summary>
