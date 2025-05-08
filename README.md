@@ -37,7 +37,7 @@ This repository contains a controlled, educational ransomware simulation.
    ```
 
 3. **Add your payload**
-   Copy `CalculatorApp.exe` into:
+   Copy into:
 
    ```
    capstone-site/public/Downloads
